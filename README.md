@@ -12,4 +12,4 @@ Para poder instalar el Alamofire, usamos CocoaPods
 
 ### Funcionamiento ###
 
-![] (https://github.com/Santi-Dev/SportsDTB/blob/main/SportsDTB.gif)
+![](https://github.com/Santi-Dev/SportsDTB/blob/main/SportsDTB.gif)
