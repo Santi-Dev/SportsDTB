@@ -64,13 +64,13 @@ class TeamListTableCell: UITableViewCell {
         aImage.contentMode = .scaleAspectFit
         return aImage
     }()
-
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupView()
         setupConstraints()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:= has not been implemented")
     }
@@ -80,12 +80,12 @@ class TeamListTableCell: UITableViewCell {
         contentView.addSubview(stadiumName)
         contentView.addSubview(yearFoundation)
         contentView.addSubview(aImage)
+        contentView.backgroundColor = .lightGray.withAlphaComponent(0.1)
+        contentView.layer.cornerRadius = 20
     }
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            
-            
             aImage.heightAnchor.constraint(equalToConstant: 65),
             aImage.widthAnchor.constraint(equalToConstant: 65),
             aImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),

@@ -9,6 +9,7 @@ import UIKit
 
 protocol TeamListDelegate {
     func toogleLoading()
+    func loadingSuccess()
     func reloadTable()
     func showError()
 }
@@ -28,6 +29,14 @@ class TeamListViewController: UIViewController {
         return teamsTable
     }()
     
+    private var loadingAnimation: UIActivityIndicatorView = {
+        let loadingAnimation = UIActivityIndicatorView()
+        loadingAnimation.translatesAutoresizingMaskIntoConstraints = false
+        loadingAnimation.style = .medium
+        loadingAnimation.color = .systemCyan
+        return loadingAnimation
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,6 +53,7 @@ class TeamListViewController: UIViewController {
 
         view.backgroundColor = .white
         view.addSubview(tableViewTeam)
+        view.addSubview(loadingAnimation)
         
         navigationController?.navigationBar.prefersLargeTitles = true
         tableViewTeam.dataSource = self
@@ -57,8 +67,15 @@ class TeamListViewController: UIViewController {
             tableViewTeam.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             tableViewTeam.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             tableViewTeam.topAnchor.constraint(equalTo: self.view.topAnchor),
-            tableViewTeam.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)])
+            tableViewTeam.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            
+            loadingAnimation.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            loadingAnimation.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
+            
+            
+            ])
     }
+    
 }
 
 extension TeamListViewController: UITableViewDelegate {
@@ -72,6 +89,7 @@ extension TeamListViewController: UITableViewDataSource {
         guard let cellTeam = tableView.dequeueReusableCell(withIdentifier: String(describing: TeamListTableCell.self)) as? TeamListTableCell else {
             return UITableViewCell()
         }
+        
         
         let team = viewModel?.getTeam(at: indexPath.row).strTeam
         let stadium = viewModel?.getTeam(at: indexPath.row).strStadium
@@ -94,10 +112,18 @@ extension TeamListViewController: UITableViewDataSource {
 }
 
 extension TeamListViewController: TeamListDelegate {
+    func loadingSuccess() {
+        tableViewTeam.isHidden = false
+        loadingAnimation.isHidden = true
+        loadingAnimation.stopAnimating()
+    }
+    
     
     func toogleLoading() {
-        print("Loading Team List")
-
+        print("HOLAAA")
+        tableViewTeam.isHidden = true
+        loadingAnimation.isHidden = false
+        loadingAnimation.startAnimating()
     }
     
     func reloadTable() {

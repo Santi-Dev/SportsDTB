@@ -23,9 +23,9 @@ class TeamListViewModel {
     func getTeams () {
         self.delegate.toogleLoading()
         service.getTeams(url: url) { teams in
-            self.delegate.toogleLoading()
             self.teams = teams
             self.delegate.reloadTable()
+            self.delegate.loadingSuccess()
         } onError: {
             self.delegate.showError()
         }
