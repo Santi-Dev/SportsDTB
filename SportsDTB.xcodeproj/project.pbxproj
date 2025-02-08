@@ -85,6 +85,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8042554A2894AC2400977C0F /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		9302B25D28624D38009A63FB /* TeamDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -185,6 +192,7 @@
 		931CD790285CCC6F00A3D3F6 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				8042554A2894AC2400977C0F /* Fonts */,
 				931CD793285CCC8D00A3D3F6 /* Modules */,
 				931CD792285CCC8700A3D3F6 /* Shared */,
 				931CD791285CCC7800A3D3F6 /* Utils */,

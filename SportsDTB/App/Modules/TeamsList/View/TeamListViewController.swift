@@ -15,11 +15,12 @@ protocol TeamListDelegate {
 }
 
 
-
 class TeamListViewController: UIViewController {
-        
+    
     private var service = TeamListService()
     private var viewModel: TeamListViewModel?
+    
+    let monserratFont = UIFont(name: "Montserrat-VariableFont_wght.ttf", size: UIFont.labelFontSize)
     
     var url: String = ""
     
@@ -75,6 +76,8 @@ class TeamListViewController: UIViewController {
             
             ])
     }
+    
+    
     
 }
 
